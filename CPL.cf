@@ -1,0 +1,61 @@
+-- programs ------------------------------------------------
+
+entrypoints Prog ;
+
+Program.   Prog ::= [TopDef] ;
+
+VarDef.    TopDef ::= Ident "=" Expr  ;
+
+FnDef.	   TopDef ::= Ident "(" [Arg] ")" Blk ;
+
+separator nonempty TopDef "" ;
+
+Argument.  Arg ::= Ident;
+
+separator  Arg "," ;
+
+-- statements ----------------------------------------------
+
+Block.     Blk ::= "{" Comp "}" ;
+
+CompPar.   Comp ::= Comp "||" Stmt ;
+
+CompSeq.   Comp ::= Comp ";" Stmt ;
+
+CompNil.   Comp ::= Stmt;
+
+BStmt.     Stmt ::= Blk ;
+
+Skip.     Stmt ::= "skip" ;
+
+Ass.       Stmt ::= Ident "=" Expr ;
+
+Ret.       Stmt ::= "return" Expr ;
+
+CondElse.  Stmt ::= "if" "(" Expr ")" Stmt "else" Stmt  ;
+
+While.     Stmt ::= "while" "(" Expr ")" Stmt ;
+
+SExp.      Stmt ::= Expr ;
+
+
+-- Expressions ---------------------------------------------
+
+EVar.      Expr4 ::= Ident ;
+
+ELitInt.   Expr4 ::= Integer ;
+
+EApp.      Expr4 ::= Ident "(" [Expr] ")" ;
+
+EMul.      Expr3 ::= Expr3 "*" Expr4 ;
+
+EAdd.      Expr2 ::= Expr2 "+" Expr3 ;
+
+ESub.      Expr2 ::= Expr2 "-" Expr3 ;
+
+EEq.      Expr1 ::= Expr1 "==" Expr2 ;
+
+coercions  Expr 4;
+
+separator  Expr "," ;
+

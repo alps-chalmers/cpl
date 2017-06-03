@@ -1,0 +1,14 @@
+AbsCPL.hs
+LexCPL.hs
+LexCPL.x
+ParCPL.hs
+ParCPL.y
+TestCPL.hs
+DocCPL.txt
+SkelCPL.hs
+PrintCPL.hs
+ErrM.hs
+Makefile
+*.o
+*.hi
+TestCPL
