@@ -1,0 +1,24 @@
+x := 0
+y := 0
+
+main(){
+   setX() || setY();
+   wait(x!=0);
+   wait(y!=0);
+   return (x + y)
+}
+
+setX(){
+    x := sum(42)
+}
+
+setY(){
+    y := sum(23)
+}
+sum(n){
+    i := 0;
+    while(n>=0){
+       i := i + n;
+       n := n - 1
+    }
+}

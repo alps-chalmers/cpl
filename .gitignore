@@ -12,3 +12,5 @@ Makefile
 *.o
 *.hi
 TestCPL
+*.bak
+test/Test

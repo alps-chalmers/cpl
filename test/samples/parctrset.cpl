@@ -1,0 +1,14 @@
+x := 0
+
+main(){
+    countTo10() || countTo10()
+}
+
+countTo10(){
+    i := 0 ;
+    while(i < 10){
+        x := x + 1 ;
+        i := i + 1
+    }
+}
+

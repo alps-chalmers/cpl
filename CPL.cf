@@ -4,7 +4,7 @@ entrypoints Prog ;
 
 Program.   Prog ::= [TopDef] ;
 
-VarDef.    TopDef ::= Ident "=" Expr  ;
+VarDef.    TopDef ::= Ident ":=" Expr  ;
 
 FnDef.	   TopDef ::= Ident "(" [Arg] ")" Blk ;
 
@@ -26,9 +26,11 @@ CompNil.   Comp ::= Stmt;
 
 BStmt.     Stmt ::= Blk ;
 
-Skip.     Stmt ::= "skip" ;
+Wait.      Stmt ::= "wait" "(" Expr ")";
 
-Ass.       Stmt ::= Ident "=" Expr ;
+Skip.      Stmt ::= "skip" ;
+
+Ass.       Stmt ::= Ident ":=" Expr ;
 
 Ret.       Stmt ::= "return" Expr ;
 
@@ -38,8 +40,7 @@ While.     Stmt ::= "while" "(" Expr ")" Stmt ;
 
 SExp.      Stmt ::= Expr ;
 
-
--- Expressions ---------------------------------------------
+-- expressions ---------------------------------------------
 
 EVar.      Expr4 ::= Ident ;
 
@@ -47,15 +48,33 @@ ELitInt.   Expr4 ::= Integer ;
 
 EApp.      Expr4 ::= Ident "(" [Expr] ")" ;
 
-EMul.      Expr3 ::= Expr3 "*" Expr4 ;
+EMul.      Expr3 ::= Expr3 MulOp Expr4 ;
 
-EAdd.      Expr2 ::= Expr2 "+" Expr3 ;
+EAdd.      Expr2 ::= Expr2 AddOp Expr3 ;
 
-ESub.      Expr2 ::= Expr2 "-" Expr3 ;
-
-EEq.      Expr1 ::= Expr1 "==" Expr2 ;
+ECmp.      Expr1 ::= Expr1 RelOp Expr2 ;
 
 coercions  Expr 4;
 
 separator  Expr "," ;
+
+-- operators -----------------------------------------------
+
+Mul.       MulOp ::= "*";
+
+Plus.      AddOp ::= "+" ;
+
+Minus.     AddOp ::= "-" ;
+
+LTH.       RelOp ::= "<" ;
+
+LE.        RelOp ::= "<=" ;
+
+GTH.       RelOp ::= ">" ;
+
+GE.        RelOp ::= ">=" ;
+
+EQU.       RelOp ::= "==" ;
+
+NE.        RelOp ::= "!=" ;
 
