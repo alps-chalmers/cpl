@@ -8,7 +8,6 @@ DocCPL.txt
 SkelCPL.hs
 PrintCPL.hs
 ErrM.hs
-Makefile
 *.o
 *.hi
 TestCPL
